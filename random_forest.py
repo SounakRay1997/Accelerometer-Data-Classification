@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 import numpy as np
-INPUT_PATH="/home/sounak/Activity-Recognition-from-Single-Chest-Mounted-Accelerometer/output14.csv"
+INPUT_PATH="/Activity-Recognition-from-Single-Chest-Mounted-Accelerometer/14.csv" '''Took input from the 14th CSV File present. Please edit this accordingly to feed the whole dataset or a particular CSV File'''
 dataset=pd.read_csv(INPUT_PATH)
 headers=["Serial Number", "X-axis", "Y-axis", "Z-axis", "Activity"]
 def add_headers(dataset1, headers1):
