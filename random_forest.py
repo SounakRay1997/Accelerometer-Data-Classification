@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
+from scipy import stats
 import numpy as np
 INPUT_PATH="/Activity-Recognition-from-Single-Chest-Mounted-Accelerometer/14.csv" #Took input from the 14th CSV File present. Please edit this accordingly, to feed the whole dataset or a particular CSV File
 dataset=pd.read_csv(INPUT_PATH)
@@ -35,7 +36,7 @@ x_min=[np.min(x[i:i+window_size]) for i in range(0, len(x), stride) if i+window_
 y_min=[np.min(y[i:i+window_size]) for i in range(0, len(y), stride) if i+window_size <= len(y)]
 z_min=[np.min(z[i:i+window_size]) for i in range(0, len(z), stride) if i+window_size <= len(z)]
 am_min=[np.min(am[i:i+window_size]) for i in range(0, len(am), stride) if i+window_size <= len(am)]
-target1=[np.min(target[i:i+window_size]) for i in range(0, len(target), stride) if i+window_size <= len(target)]
+target1=[stats.mode(target[i:i+window_size]) for i in range(0, len(target), stride) if i+window_size <= len(target)]
 dataset1=np.vstack((x_avg, y_avg, z_avg, am_avg, x_std, y_std, z_std, am_std, x_max, y_max, z_max, am_max, x_min, y_min, z_min, am_min, target1)).T
 df=pd.DataFrame(dataset1)
 df.to_csv("/home/sounak/ProcessedData.csv")
