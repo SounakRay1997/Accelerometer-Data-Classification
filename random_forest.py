@@ -36,8 +36,7 @@ x_min=[np.min(x[i:i+window_size]) for i in range(0, len(x), stride) if i+window_
 y_min=[np.min(y[i:i+window_size]) for i in range(0, len(y), stride) if i+window_size <= len(y)]
 z_min=[np.min(z[i:i+window_size]) for i in range(0, len(z), stride) if i+window_size <= len(z)]
 am_min=[np.min(am[i:i+window_size]) for i in range(0, len(am), stride) if i+window_size <= len(am)]
-target=[np.min(target[i:i+window_size]) for i in range(0, len(target), stride) if i+window_size <= len(target)]
-target1=target[0][0]
+target1=[np.min(target[i:i+window_size]) for i in range(0, len(target), stride) if i+window_size <= len(target)]
 dataset1=np.vstack((x_avg, y_avg, z_avg, am_avg, x_std, y_std, z_std, am_std, x_max, y_max, z_max, am_max, x_min, y_min, z_min, am_min, target1)).T
 df=pd.DataFrame(dataset1)
 df.to_csv("/home/sounak/ProcessedData.csv")
